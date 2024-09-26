@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Synergy Squad Documentation</header>
+      <ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li>
+          <a class="nav-link" href="#What_you_should_already_know"
+            >Components Required:</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#JavaScript_and_Java"
+            >Software Components</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Hello_world">AI Algorithms:</a></li>
+        <li>
+          <a class="nav-link" href="#Variables"
+            >Step-by-Step Protocol for Sensor Development</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Declaring_variables"
+            >Calibration of ISEs:</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Variable_scope">Microcontroller Setup:</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Global_variables">Field Testing:</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Constants"
+            >AI-Driven Predictive Maintenance:</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Data_types">Sensing and actuating (Primitive)</a></li>
+        <li>
+          <a class="nav-link" href="#if...else_statement"
+            >Sencing and automation complete</a
+          >
+        
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>
+            The proposed sensor-based kit is designed to measure key nutrient
+            parameters such as Nitrogen (N), Phosphorus (P), and Potassium (K)
+            (collectively referred to as NPK) in Fermented/Liquid Organic Manure
+            (F/L OM) for rural biogas plants. This kit will also integrate
+            sensors to monitor pH, temperature, and moisture content, all of
+            which are critical for understanding the quality of the bio-slurry.
+            The goal is to develop an affordable, AI-driven, real-time nutrient
+            monitoring system that is simple to use and specifically designed
+            for small-scale biogas plants.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="What_you_should_already_know">
+        <header>Components Required:</header>
+        <article>
+          <h1>1. Hardware Componentd</h1>
+          <p>
+            Ion-selective electrodes (ISEs) for measuring N (Ammonium), P
+            (Phosphate), and K (Potassium) ions. pH sensors for measuring the
+            acidity or alkalinity of the bio-slurry. Temperature sensors (such
+            as thermocouples or thermistors) for monitoring temperature
+            fluctuations during digestion. Moisture sensors for detecting the
+            water content in the slurry.
+          </p>
+
+          <ul>
+            <li>
+              <b>Microcontroller Unit (MCU):</b>A low-power microcontroller like
+              the Arduino Nano or ESP32 to process sensor data and transmit it
+              wirelessly if necessary.
+            </li>
+            <li>
+              <b>Power Supply:</b> Battery-powered, with the option for
+              solar-powered operation to fit rural, off-grid environments.
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="JavaScript_and_Java">
+        <header>Software Components</header>
+        <article>
+          <h1>AI Algorithms:</h1>
+          <p>
+            Machine learning algorithms to analyze the sensor data and predict
+            trends such as nutrient depletion or temperature instability. This
+            will be particularly useful for AI-driven control of feedstock
+            addition and slurry removal.
+          </p>
+          <h1>User Interface (UI):</h1>
+          <p>
+            A simple display (e.g., LCD) or mobile app interface to show the
+            results of NPK levels, pH, temperature, and moisture content in real
+            time.
+          </p>
+          <h1>Cloud Data Storage:</h1>
+          <p>
+            IoT integration to store and analyze long-term data trends using
+            cloud-based platforms like AWS IoT or Google Cloud.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Hello_world">
+        <header>Step-by-Step Protocol for Sensor Development</header>
+        <article>
+          <h1>Step 1: Selection of Sensors</h1>
+          <h4>Nutrient Sensors (N, P, K Detection)</h4>
+          <ul>
+            <li>
+              <b>Nitrogen:</b> Utilize Ammonium ion-selective electrodes
+              (NH4⁺-ISEs) to detect nitrogen in the bio-slurry. These electrodes
+              are sensitive to NH4⁺ ions, which are a key form of nitrogen in
+              organic manure.
+            </li>
+            <li>
+              <b>Phosphorus:</b> For phosphorus, a Phosphate ion-selective
+              electrode (PO4³⁻-ISE) will be used. This sensor responds to
+              phosphate ions in the bio-slurry and is ideal for real-time
+              detection.
+            </li>
+            <li>
+              <b>Potassium:</b> A Potassium ion-selective electrode (K⁺-ISE) can
+              be used for potassium detection, providing direct measurement of
+              available potassium in the manure.
+            </li>
+            <li>
+              <b>pH Sensor:</b> Digital pH sensors based on glass electrodes or
+              solid-state electrodes can be used. These sensors provide
+              real-time feedback on the acid-base balance in the slurry, which
+              is crucial for understanding the microbial health during
+              digestion.
+            </li>
+            <li>
+              <b>Temperature Sensor:</b> Thermocouples or thermistors are common
+              choices for temperature monitoring. These sensors provide
+              real-time data on the digestion temperature, which is essential
+              for maintaining optimal biogas production conditions.
+            </li>
+            <li>
+              <b>Moisture Sensor:</b>Use capacitive moisture sensors to detect
+              water content. These sensors are non-invasive and provide accurate
+              data on the moisture level of the slurry, helping to predict the
+              ease of transport and storage.
+            </li>
+          </ul>
+         
+         
+        </article>
+      </section>
+      <section class="main-section" id="Variables">
+        <header></header>
+        <h1>Step 2: Sensor Calibration</h1>
+
+        <p>
+          <b>Calibration of ISEs:</b>
+          Each ion-selective electrode must be calibrated before use. This
+          involves preparing standard solutions of known ion concentrations
+          (e.g., ammonium, phosphate, potassium) and using these solutions to
+          create a calibration curve. The calibration data will be stored in the
+          microcontroller, allowing the system to correct for any deviations in
+          readings and ensuring accurate real-time measurements.
+        </p>
+        <p>
+          <b>Calibration of pH and Temperature Sensors:</b>
+          pH sensors should be calibrated using standard buffer solutions (pH 4,
+          7, and 10) to ensure accuracy. Temperature sensors must be tested
+          against a known temperature reference to ensure accuracy.
+        </p>
+        <p>
+          You can use ISO 8859-1 or Unicode letters such as å and ü in
+          identifiers. You can also use the Unicode escape sequences as
+          characters in identifiers. Some examples of legal names are
+          Number_hits, temp99, and _name.
+        </p>
+      </section>
+      <section class="main-section" id="Declaring_variables">
+        <header></header>
+        <article>
+          <h1>
+            Step 3: Integration with Microcontroller and Software Development
+          </h1>
+
+          <p>
+            <b>Microcontroller Setup:</b>
+            Connect the sensors to a microcontroller (e.g., ESP32). The
+            microcontroller will receive the data from the sensors, process it,
+            and then display the results on a digital interface or transmit it
+            to the cloud. Power-efficient data logging will be set up to store
+            continuous data from the sensors for trend analysis.
+          </p>
+          <p>
+            <b>Software Development:</b>
+            Write the sensor interfacing code using programming languages such
+            as Python or C++. Develop the AI-based algorithms to monitor trends
+            in nutrient content, temperature, and pH levels. Machine learning
+            models (e.g., Random Forest or Decision Trees) can be used to
+            predict any necessary adjustments, like adding feedstock or altering
+            temperature to optimize digestion. Create a user-friendly interface,
+            either on a small LCD screen or a mobile app, where farmers can see
+            real-time nutrient readings and health status of their bio-slurry.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Variable_scope">
+        <header></header>
+        <article>
+          <h1>Step 4: Testing and Validation</h1>
+          <h3>Field Testing:</h3>
+          <p>
+            Test the kit at a small biogas plant under different conditions,
+            such as varying temperature, feedstock types, and bio-slurry
+            compositions. Compare the sensor readings against lab-based
+            measurements of NPK to ensure accuracy.
+          </p>
+          <h3>Validation:</h3>
+          <p>
+            Ensure the system operates accurately and reliably for an extended
+            period in rural settings. Key indicators for success include
+            accurate nutrient readings, ease of use, and robustness under
+            different environmental conditions. Additional Considerations
+          </p>
+        
+        </article>
+      </section>
+      <section class="main-section" id="Global_variables">
+        <header></header>
+        <article>
+          <h1>AI-Driven Predictive Maintenance:</h1>
+          <p>
+            Implement predictive algorithms based on sensor data trends to
+            notify users of upcoming maintenance needs, like cleaning sensors or
+            replenishing power supplies, ensuring system longevity. Wireless
+            Communication (Optional for Remote Monitoring)
+          </p>
+
+          <p>
+            Integrate the sensor kit with IoT (Internet of Things) technology
+            using Wi-Fi or LoRa modules. This will allow remote monitoring and
+            control of the system from a central hub or mobile device.
+            Cost-Effective Design.
+          </p>
+          <p>
+            Ensure that the sensor materials and components are locally
+            available and affordable, allowing for easy scalability across rural
+            biogas plants in India. Conclusion The proposed sensor-based kit
+            provides an innovative, cost-effective, and scalable solution for
+            real-time nutrient analysis in bio-slurry. By utilizing AI-driven
+            algorithms, ion-selective electrodes, and simple interface designs,
+            this kit will empower rural farmers to monitor their bio-slurry’s
+            nutrient content, optimize its usage in agriculture, and improve the
+            overall efficiency of biogas production systems. The protocol
+            outlined ensures that the technology is feasible, accessible, and
+            implementable in the rural Indian context, directly addressing the
+            problem statement's goals.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Constants">
+       
+        </article>
+      </section>
+      <section class="main-section" id="Data_types">
+        <header>sensing and actuation [Primitive and periodically trained]</header>
+        <p>
+          Arduino IDE code that sends sensor data (NPK, pH, temperature, and
+          moisture) to a database and automates functions using the ESP32
+          microcontroller, we can use the following approach:
+        </p>
+        <article>
+          <h1>Components of the Code:</h1>
+          <ol>
+            <li>
+              <b>Sensor Reading:</b> Code to read data from the sensors (NPK,
+              pH, temperature, and moisture sensors).
+            </li>
+            <li>
+              <b>Wi-Fi Connectivity:</b> ESP32 will connect to Wi-Fi to transmit
+              the data.
+            </li>
+            <li>
+              <b>HTTP Communication: </b>Sending data to a remote database or
+              cloud platform via HTTP (you could use REST APIs to send data to
+              platforms like Firebase, AWS IoT, or your custom database).
+            </li>
+            <li>
+              <b>Automation: </b> Use the sensor data to trigger actions such as
+              adjusting feedstock, temperature, or other operations.
+            </li>
+          </ol>
+          <h1>Libraries Required:</h1>
+          <ul>
+            <li>
+                WiFi.h for Wi-Fi communication.
+            </li>
+            <li>
+                HTTPClient.h for sending HTTP requests.
+            </li>
+            <li>
+                Sensor-specific libraries (depending on the specific sensors you're using).
+            </li>
+            <li>
+                Some general-purpose libraries for data processing (if needed).
+            </li>
+          </ul>
+
+          <h3 style="padding-top: 20px;">Code for automating in Arduino</h3>
+          <code style="background-color: black; color:aliceblue; border-radius: 15px;">
+            //Example code
+
+
+            #include (WiFi.h)
+                #include (HTTPClient.h)
+                
+                // network credentials
+                const char* ssid = "your_SSID";
+                const char* password = "your_PASSWORD";
+                
+                //server API endpoint or database URL
+                const char* serverName = "http://your-server.com/api/upload";
+                
+                unsigned long previousMillis = 0; 
+                const long interval = 10000; // Send data every 10 seconds
+                
+                // Define pins for sensors
+                #define N_SENSOR_PIN 34
+                #define P_SENSOR_PIN 35
+                #define K_SENSOR_PIN 32
+                #define PH_SENSOR_PIN 33
+                #define TEMP_SENSOR_PIN 4
+                #define MOISTURE_SENSOR_PIN 15
+                
+                // Variables to store sensor data
+                float nitrogen = 0.0;
+                float phosphorus = 0.0;
+                float potassium = 0.0;
+                float pH = 0.0;
+                float temperature = 0.0;
+                float moisture = 0.0;
+                
+                void setup() {
+                  // Initialize serial communication
+                  Serial.begin(115200);
+                  
+                  // Initialize sensors (replace with actual initialization code if needed)
+                  // For example, initialize I2C, ADC, etc.
+                
+                  // Connect to Wi-Fi
+                  WiFi.begin(ssid, password);
+                  Serial.print("Connecting to WiFi");
+                  
+                  while (WiFi.status() != WL_CONNECTED) {
+                    delay(1000);
+                    Serial.print(".");
+                  }
+                  
+                  Serial.println();
+                  Serial.println("Connected to WiFi");
+                }
+                
+                void loop() {
+                  // Read sensor data
+                  nitrogen = readNitrogen();
+                  phosphorus = readPhosphorus();
+                  potassium = readPotassium();
+                  pH = readPH();
+                  temperature = readTemperature();
+                  moisture = readMoisture();
+                
+                  // Display sensor readings in serial monitor for debugging
+                  Serial.print("N: "); Serial.print(nitrogen);
+                  Serial.print(", P: "); Serial.print(phosphorus);
+                  Serial.print(", K: "); Serial.print(potassium);
+                  Serial.print(", pH: "); Serial.print(pH);
+                  Serial.print(", Temp: "); Serial.print(temperature);
+                  Serial.print(", Moisture: "); Serial.println(moisture);
+                
+                  // Automation logic: You can add conditions based on sensor readings
+                  if (temperature > 40) {
+                    // Example: If temperature is too high, take action
+                    Serial.println("Warning: High temperature detected!");
+                    // Add logic to control the biogas plant (e.g., fan, cooling system)
+                  }
+                  
+                  // Send data to the database every `interval` milliseconds
+                  unsigned long currentMillis = millis();
+                  if (currentMillis - previousMillis >= interval) {
+                    previousMillis = currentMillis;
+                    sendToDatabase();
+                  }
+                
+                  delay(1000); // Delay for stability (adjust based on requirement)
+                }
+                
+                // Function to read nitrogen sensor data
+                float readNitrogen() {
+                  // Replace with actual code to read nitrogen sensor
+                  return analogRead(N_SENSOR_PIN) * (5.0 / 1023.0); // Example for analog read
+                }
+                
+                // Function to read phosphorus sensor data
+                float readPhosphorus() {
+                  // Replace with actual code to read phosphorus sensor
+                  return analogRead(P_SENSOR_PIN) * (5.0 / 1023.0);
+                }
+                
+                // Function to read potassium sensor data
+                float readPotassium() {
+                  // Replace with actual code to read potassium sensor
+                  return analogRead(K_SENSOR_PIN) * (5.0 / 1023.0);
+                }
+                
+                // Function to read pH sensor data
+                float readPH() {
+                  // Replace with actual code to read pH sensor
+                  return analogRead(PH_SENSOR_PIN) * (14.0 / 1023.0); // Example for pH scaling
+                }
+                
+                // Function to read temperature sensor data
+                float readTemperature() {
+                  // Replace with actual code to read temperature sensor (e.g., thermistor)
+                  return analogRead(TEMP_SENSOR_PIN) * (100.0 / 1023.0); // Example for thermistor
+                }
+                
+                // Function to read moisture sensor data
+                float readMoisture() {
+                  // Replace with actual code to read moisture sensor
+                  return analogRead(MOISTURE_SENSOR_PIN) * (100.0 / 1023.0); // Example for moisture
+                }
+                
+                // Function to send data to the server/database
+                void sendToDatabase() {
+                  if (WiFi.status() == WL_CONNECTED) { // Check Wi-Fi status
+                    HTTPClient http;
+                
+                    // Prepare data to send as a JSON object
+                    String jsonData = "{";
+                    jsonData += "\"nitrogen\":" + String(nitrogen) + ",";
+                    jsonData += "\"phosphorus\":" + String(phosphorus) + ",";
+                    jsonData += "\"potassium\":" + String(potassium) + ",";
+                    jsonData += "\"pH\":" + String(pH) + ",";
+                    jsonData += "\"temperature\":" + String(temperature) + ",";
+                    jsonData += "\"moisture\":" + String(moisture);
+                    jsonData += "}";
+                
+                    // Specify content type as JSON
+                    http.begin(serverName); 
+                    http.addHeader("Content-Type", "application/json");
+                
+                    // Send the HTTP POST request
+                    int httpResponseCode = http.POST(jsonData);
+                
+                    // Check the response code
+                    if (httpResponseCode > 0) {
+                      String response = http.getString();
+                      Serial.println("Response: " + response); // Server response
+                    } else {
+                      Serial.println("Error sending data. HTTP response code: " + String(httpResponseCode));
+                    }
+                
+                    // Free resources
+                    http.end();
+                  } else {
+                    Serial.println("Error: Wi-Fi not connected");
+                  }
+                }
+                
+          </code>
+
+          <h1>Explanation:</h1>
+          <ul>
+            <li>
+                <b>Wi-Fi Setup:</b>  Connect the ESP32 to a Wi-Fi network.
+            </li>
+            <li>
+                <b>Sensor Readings:</b> The code simulates sensor readings.
+                 Replace the analogRead() lines with actual sensor code, depending on your sensors.
+            </li>
+            <li>
+                <b>HTTP POST Request:</b>Sends sensor data in JSON format to the 
+                server using HTTP POST. Modify the serverName 
+                to point to your server or database endpoint.
+            </li>
+            <li>
+                <b>Automation Logic:</b>  Example automation logic is included to act 
+                based on sensor data (e.g., if temperature exceeds a threshold).
+            </li>
+          </ul>
+
+          <h1>Modifications:</h1>
+          <ol>
+            <li>
+                <b>Sensor Libraries: </b>  You need to include specific sensor
+                 libraries for NPK, pH, temperature, and moisture sensors based on the hardware.
+            </li>
+            <li>
+                <b>Database Integration:</b> Replace serverName with the actual database URL or API endpoint.
+            </li>
+            <li>
+                <b>More Advanced Automation:</b>You can add more automation logic to 
+                take specific actions based on sensor readings, such as controlling hardware components (fans, pumps, etc.).
+            </li>
+            <li>
+                <b>Automation Logic:</b>  Example automation logic is included to act 
+                based on sensor data (e.g., if temperature exceeds a threshold).
+            </li>
+          </ol>
+
+          <h1>test</h1>
+          <ol>
+            <li>
+                Upload the code to your ESP32 using Arduino IDE.
+            </li>
+            <li>
+                Set up your server or database endpoint to receive HTTP POST requests.
+            </li>
+            <li>
+                Verify that sensor data is being sent to the database and that automated actions are triggered as expected.
+            </li>
+           
+          </ol>
+
+
+        </article>
+      </section>
+      <section class="main-section" id="if...else_statement">
+        <header>Sencing and automation complete</header>
+        <article>
+          <p>To achieve the goal of collecting sensor data from an Arduino Uno, sending it to an Express.js API for further analysis using machine learning in Python,
+             and then returning the results back to the Arduino to control actuators, the setup can be broken down into several parts:</p>
+            
+             <h1>Overview of the System:</h1>
+             <ol>
+               <li>
+                    <b>Arduino Uno:</b> Collects sensor data (e.g., from NPK, pH, temperature, and moisture sensors)
+                     and sends it to the Express.js API via serial or Wi-Fi/Ethernet.
+               </li>
+               <li>
+                  <b>Express.js API:</b> Receives the data, stores it, and calls a Python script for machine learning analysis..
+               </li>
+               <li>
+                  <b>Python Script:</b>Performs machine learning on the received data and sends results 
+                  (e.g., recommendations or predictions) back to the Express.js API.
+               </li>
+               <li>
+                  <b>Arduino Actuator:</b> The processed results are sent back to the Arduino Uno,
+                   which then triggers the appropriate actuators (e.g., fans, pumps).
+               </li>
+               
+             </ol>
+
+            <h1><b>Step1</b></h1>
+            <h3>Part 1: Arduino Uno Code to Send Sensor Data to Express.js API</h3>
+            <p>If you're using an Arduino Uno, you can send data to the API using 
+                the Ethernet module (for wired connection) or ESP8266/ESP01 module for wireless (Wi-Fi).</p>
+
+            <h2>Arduino Uno Code (with Ethernet/Wi-Fi module):</h2>
+            <ul>
+                <li>For Ethernet: Ethernet.h</li>
+                <li>For Wi-Fi (ESP8266): ESP8266WiFi.h</li>
+            </ul>
+            <p style="padding-top: 10px;">Here is an example code using the Ethernet module:</p>
+
+          <code style="background-color: black; color:green">
+            //Arduino
+
+            #include (SPI.h)
+            #include (Ethernet.h) // Include Ethernet library for wired connection
+            
+            // MAC address and IP of your Arduino Ethernet shield
+            byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+            IPAddress server(192, 168, 1, 100); // IP address of the server where Express.js is running
+            EthernetClient client;
+            
+            // Sensor Pins
+            int N_SENSOR_PIN = A0;
+            int P_SENSOR_PIN = A1;
+            int K_SENSOR_PIN = A2;
+            int PH_SENSOR_PIN = A3;
+            int TEMP_SENSOR_PIN = A4;
+            int MOISTURE_SENSOR_PIN = A5;
+            
+            void setup() {
+              // Start Ethernet connection
+              Ethernet.begin(mac);
+              Serial.begin(9600);
+              
+              // Wait for connection:
+              if (Ethernet.begin(mac) == 0) {
+                Serial.println("Failed to configure Ethernet using DHCP");
+                while (true);
+              }
+              
+              Serial.println("Ethernet connected");
+            }
+            
+            void loop() {
+              // Reading sensor data
+              int nitrogen = analogRead(N_SENSOR_PIN);
+              int phosphorus = analogRead(P_SENSOR_PIN);
+              int potassium = analogRead(K_SENSOR_PIN);
+              int ph = analogRead(PH_SENSOR_PIN);
+              int temp = analogRead(TEMP_SENSOR_PIN);
+              int moisture = analogRead(MOISTURE_SENSOR_PIN);
+            
+              // Check if connection is established to server
+              if (client.connect(server, 3000)) { // 3000 is the port number where Express.js is running
+                Serial.println("Connected to server");
+            
+                // Create a JSON payload with the sensor data
+                String jsonData = "{";
+                jsonData += "\"nitrogen\":" + String(nitrogen) + ",";
+                jsonData += "\"phosphorus\":" + String(phosphorus) + ",";
+                jsonData += "\"potassium\":" + String(potassium) + ",";
+                jsonData += "\"pH\":" + String(ph) + ",";
+                jsonData += "\"temperature\":" + String(temp) + ",";
+                jsonData += "\"moisture\":" + String(moisture);
+                jsonData += "}";
+            
+                // HTTP POST request to send the data to the Express.js API
+                client.println("POST /data HTTP/1.1");
+                client.println("Host: 192.168.1.100");
+                client.println("Content-Type: application/json");
+                client.println("Connection: close");
+                client.print("Content-Length: ");
+                client.println(jsonData.length());
+                client.println();
+                client.println(jsonData);
+            
+                // Close connection
+                client.stop();
+              } else {
+                Serial.println("Connection failed");
+              }
+            
+              // Wait before sending the next batch of data
+              delay(5000); // 5 seconds
+            }
+            </code>
+            
+            <h3>You will create a simple Express.js server that listens for POST requests containing the sensor data.
+                 The server will store the data and call a Python script to perform machine learning.</h3>
+           
+            <p style="padding-top: 10px;">Install the necessary packages:</p>
+            <code style="background-color: black; color:white">
+                npm install express body-parser
+            </code>
+            <p style="padding-top: 10px;">Create an app.js file</p>
+          <code style="background-color: black; color:yellow">
+            //JavaScript
+            
+            
+            const express = require('express');
+            const bodyParser = require('body-parser');
+            const { spawn } = require('child_process');
+            const app = express();
+            const port = 3000; // Port where the server will run
+            
+            app.use(bodyParser.json());
+            
+            // Route to handle POST requests from Arduino
+            app.post('/data', (req, res) => {
+                const sensorData = req.body;
+                console.log('Received sensor data:', sensorData);
+            
+                // Call Python script for ML analysis
+                const pythonProcess = spawn('python', ['ml_script.py', JSON.stringify(sensorData)]);
+            
+                pythonProcess.stdout.on('data', (data) => {
+                    console.log(`Python script output: ${data}`);
+                    res.json({ result: data.toString() }); // Send result back to Arduino
+                });
+            
+                pythonProcess.stderr.on('data', (data) => {
+                    console.error(`Error in Python script: ${data}`);
+                });
+            });
+            
+            app.listen(port, () => {
+                console.log(`Express server listening on port ${port}`);
+            });
+            
+            </code>
+
+        <h1>Part 3: Python Script for Machine Learning Analysis</h1>
+        <p>Create a Python script (ml_script.py) that will analyze the incoming data and
+             output the result. You can use libraries like sklearn or tensorflow depending on your machine learning model.</p>
+
+             <p style="padding-top: 10px;">Python</p>
+             <code style="background-color: black; color:lightblue">
+                import sys
+import json
+import numpy as np
+from sklearn.externals import joblib
+
+# Load pre-trained model (replace with actual model path)
+model = joblib.load('path_to_your_trained_model.pkl')
+
+# Get the sensor data from the command line argument
+sensor_data = json.loads(sys.argv[1])
+
+# Extract features (modify according to your input data structure)
+features = np.array([
+    sensor_data['nitrogen'],
+    sensor_data['phosphorus'],
+    sensor_data['potassium'],
+    sensor_data['pH'],
+    sensor_data['temperature'],
+    sensor_data['moisture']
+]).reshape(1, -1)
+
+# Perform prediction using the ML model
+prediction = model.predict(features)
+
+# Output the prediction (which will be sent back to Express.js)
+print(prediction[0])
+
+            </code>
+        <h1>Part 4: Arduino Actuator Control Based on Machine Learning Output</h1>
+        <p>Now that the result of the machine learning analysis is returned to the Arduino, you can use it to control actuators.
+             Add this code to your Arduino loop to handle the actuator control based on the received data.</p>
+
+             <p style="padding-top: 10px;"></p>
+             <code style="background-color: black; color:green">
+                import sys
+                void loop() {
+                    // Read sensor data
+                    // ... (same as before)
+                  
+                    // Connect and send data to Express.js server
+                    // ... (same as before)
+                  
+                    // Wait for response from server
+                    if (client.available()) {
+                      String line = client.readStringUntil('\r');
+                      Serial.println("Response from server: " + line);
+                  
+                      // Parse the response and control actuators
+                      if (line.indexOf("Activate Pump") >= 0) {
+                        // Activate pump or actuator based on ML result
+                        digitalWrite(PUMP_PIN, HIGH);
+                      } else if (line.indexOf("Deactivate Pump") >= 0) {
+                        digitalWrite(PUMP_PIN, LOW);
+                      }
+                    }
+                  
+                    // Close connection
+                    client.stop();
+                  }
+                  
+
+            </code>
+
+            <h1>Part 5: Testing the System</h1>
+            <ol>
+                <li>
+                  <b>Run the Express.js server:</b> Use node app.js to start the server.
+                </li>
+                <li>
+                  <b>Upload the Arduino sketch </b>to your Arduino Uno with the appropriate sensor and actuator connections.
+
+                </li>
+                <li>
+                  <b>Run the Python script</b>in the background that performs machine learning on the received data.
+                </li>
+                <li>
+                  <b>Observe the behavior:</b> When data is sent from Arduino to the API, it should pass through the machine
+                   learning pipeline, and the results should come back to the Arduino, triggering the appropriate actions.
+                </li>
+              </ol>
+
+              <h1>Conclusion</h1>
+              <p>This system will collect sensor data from the Arduino Uno, send it to an Express.js API, perform 
+                machine learning analysis in Python, and return actionable insights back to the Arduino for controlling actuators. By integrating real-time data collection and processing, 
+                you can create a fully automated system for smart farming, biogas plants, or any similar use case.</p>
+         
+        </article>
+      </section>
+      
+    </main>
+  </body>
+</html>
